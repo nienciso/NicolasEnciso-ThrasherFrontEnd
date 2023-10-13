@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { getAllProductos } from './api';
+import { getAllProductos, getDetallesProducto } from './api';
 
 
 function App() {
   const [productos, setProductos] = useState([]);
-
+  const [detalles, setDetalles] = useState(null);
   useEffect(() => {
     // Cargamos los productos cuando el componente se monta
     getAllProductos()
@@ -16,6 +16,18 @@ function App() {
         console.error(error);
       });
   }, []);
+
+  //detalles
+
+  const handleVerDetalles = async (productoId) => {
+    try {
+      const detalles = await getDetallesProducto(productoId);
+      setDetalles(detalles);
+    } catch (error) {
+      console.error(error);
+      // Manejar errores, como producto no encontrado, aquí si es necesario
+    }
+  };
 
 //eliminar Producto
 
@@ -49,12 +61,22 @@ const handleEliminarProducto = (productoId) => {
             <p>{producto.descripcion}</p>
             <p>Precio: ${producto.precio}</p>
             <button onClick={() => handleAddToCart(producto.id)}>Agregar al carrito</button>
-            <button onClick={() => handleEliminarProducto(producto.id)}>Eliminar</button>
+            <button onClick={() => handleVerDetalles(producto.id)}>Ver detalles</button>
           </li>
         ))}
       </ul>
+      {detalles && (
+        <div>
+          <h2>Detalles del Producto</h2>
+          <p>Nombre: {detalles.nombre}</p>
+          <p>Descripción: {detalles.descripcion}</p>
+          <p>Precio: ${detalles.precio}</p>
+          {/* Mostrar otros detalles aquí */}
+        </div>
+      )}
     </div>
   );
 }
+
 
 export default App;
