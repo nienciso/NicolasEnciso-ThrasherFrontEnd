@@ -4,6 +4,8 @@ import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import Login from './components/Login'; 
 import { getAllProductos } from './api'; 
+import CheckSession from './components/CheckSession';
+
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -21,7 +23,9 @@ function App() {
           <Route
           path="/" element={<ProductList productos={productos} />} />
           <Route path="/productos/:id" element={<ProductDetail />} />
-          <Route path="/login" element={<Login />} /> {/* Agrega la ruta de Login */}
+          <Route path="/login" element={<Login />} />
+          <Route exact path="/login" component={Login} />
+        <Route path="/validate-session" component={CheckSession} />
         </Routes>
       </div>
     </Router>
