@@ -9,23 +9,13 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      // Crear un objeto con los datos del formulario
-      const formData = {
-        email,
-        password,
-      };
-  
       // Realizar una solicitud para iniciar sesión con los datos del formulario
-      const userData = await loginUser(formData); // Pasa formData como argumento
-  
-      // Si el inicio de sesión es exitoso, puedes realizar acciones específicas,
-      // como redirigir al usuario a su panel de control o actualizar el estado
-      // de autenticación en tu aplicación.
+      const userData = await loginUser(email, password); // Pasar email y password como argumentos
+    
+      // Si el inicio de sesión es exitoso, puedes realizar acciones específicas, como redirigir al usuario a su panel de control o actualizar el estado de autenticación en tu aplicación.
       navigate('/dashboard'); // Redirige al usuario al panel de control
     } catch (error) {
-      // Si hay un error en el inicio de sesión, puedes mostrar un mensaje de error
-      // al usuario o tomar otras medidas, como borrar el formulario o mostrar
-      // un mensaje de error en el propio formulario.
+      // Si hay un error en el inicio de sesión, puedes mostrar un mensaje de error al usuario o tomar otras medidas.
       console.error('Error de inicio de sesión:', error.message);
       // También podrías mostrar un mensaje de error al usuario en tu interfaz.
     }
@@ -45,13 +35,13 @@ function Login() {
           />
         </div>
         <div>
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="text"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+        <label htmlFor="password">Contraseña:</label>
+<input
+  type="password" // Cambiar el tipo a "password"
+  id="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
         </div>
         <button type="button" onClick={handleLogin}>
           Iniciar Sesión
