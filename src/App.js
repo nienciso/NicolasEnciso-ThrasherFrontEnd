@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
-import { getAllProductos } from './api'; // Importa tu función para obtener productos
+import Login from './components/Login'; 
+import { getAllProductos } from './api'; 
 
 function App() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    // Carga los productos al montar el componente
     getAllProductos()
       .then((data) => setProductos(data))
       .catch((error) => console.error(error));
@@ -19,10 +19,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route
-            path="/"
-            element={<ProductList productos={productos} />}
-          />
+          path="/" element={<ProductList productos={productos} />} />
           <Route path="/productos/:id" element={<ProductDetail />} />
+          <Route path="/login" element={<Login />} /> {}
         </Routes>
       </div>
     </Router>

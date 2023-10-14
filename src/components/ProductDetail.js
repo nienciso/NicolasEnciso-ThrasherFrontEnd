@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDetallesProducto } from '../api'; // Importa tu función para obtener los detalles del producto
+import { getDetallesProducto } from '../api'; 
 
 function ProductDetail() {
-  const { id } = useParams(); // Obtén el ID del producto de la URL
+  const { id } = useParams(); 
   const [producto, setProducto] = useState(null);
 
   useEffect(() => {
-    // Cargar los detalles del producto basados en el ID
+    
     getDetallesProducto(id)
       .then((data) => {
         setProducto(data);
@@ -27,7 +27,7 @@ function ProductDetail() {
       <h2>{producto.nombre}</h2>
       <p>{producto.descripcion}</p>
       <p>Precio: ${producto.precio}</p>
-      {/* Puedes mostrar otros detalles del producto aquí */}
+      {}
     </div>
   );
 }
