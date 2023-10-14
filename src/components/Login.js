@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 function Login() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-
+    // Aquí puedes realizar la lógica de inicio de sesión con "email" y "password"
   };
 
   return (
@@ -18,7 +18,7 @@ function Login() {
             type="text"
             id="email"
             value={email}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>

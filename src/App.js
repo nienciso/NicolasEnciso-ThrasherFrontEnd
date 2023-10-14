@@ -21,7 +21,7 @@ function App() {
           <Route
           path="/" element={<ProductList productos={productos} />} />
           <Route path="/productos/:id" element={<ProductDetail />} />
-          <Route path="/login" element={<Login />} /> {}
+          <Route path="/login" element={<Login />} /> {/* Agrega la ruta de Login */}
         </Routes>
       </div>
     </Router>
