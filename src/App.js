@@ -23,8 +23,8 @@ function App() {
           <Route
           path="/" element={<ProductList productos={productos} />} />
           <Route path="/productos/:id" element={<ProductDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route exact path="/login" component={Login} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route exact path="/auth/login" component={Login} />
         <Route path="/validate-session" component={CheckSession} />
         </Routes>
       </div>
