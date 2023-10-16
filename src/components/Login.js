@@ -9,21 +9,23 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-
       const userData = await loginUser(email, password);
-
-   
-      if (userData) {
-
-        navigate('/');
+      console.log('Respuesta de loginUser:', userData);
+      if (userData && userData.rol) {
+        if (userData.rol === 1) {
+          navigate('/');
+        } else if (userData.rol === 2) {
+          navigate('/admin');
+        } else {
+          console.error('Rol desconocido:', userData.rol);
+        }
+      } else {
+        console.error('Datos de usuario no válidos:', userData);
       }
     } catch (error) {
-      
       console.error('Error de inicio de sesión:', error.message);
-      
     }
   };
-
   return (
     <div>
       <h1>Iniciar Sesión</h1>

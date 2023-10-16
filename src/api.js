@@ -47,9 +47,12 @@ export const loginUser = async (email, password) => {
     }
 
     const data = await response.json();
-    return data; 
+
+    // Extraer el token y rol directamente de 'data'
+    const { token, rol } = data;
+
+    return { token, rol };
   } catch (error) {
-    throw error; 
+    throw error;
   }
 };
-
