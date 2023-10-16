@@ -1,21 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Form, Link } from 'react-router-dom';
 
 function ProductList({ productos }) {
   return (
     <div>
-      <h1>Productos</h1>
-      <ul>
+      <h1 id="productos">Productos</h1>
+      <div className="row">
         {productos.map((producto) => (
-          <li key={producto.id}>
-            <h2>{producto.nombre}</h2>
-            <p>{producto.descripcion}</p>
-            <p>Precio: ${producto.precio}</p>
-            <Link to={`/productos/${producto.id}`}>Ver detalles</Link>
-          </li>
+          <div key={producto.id} className="col-md-4 mb-3">
+            <div className="card">
+              <div className="card-body">
+                <h2 className="card-title">{producto.nombre}</h2>
+                <p className="card-text">{producto.descripcion}</p>
+                <p className="card-text">Precio: ${producto.precio}</p>
+                <Link className="btn btn-primary" to={`/productos/${producto.id}`}>
+                  Ver detalles
+                </Link>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

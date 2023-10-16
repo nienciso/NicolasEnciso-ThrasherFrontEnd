@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { getAllProductos } from './api'; 
+import NavBar from './components/NavBar'
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import Login from './components/Login'; 
-import { getAllProductos } from './api'; 
 import CheckSession from './components/CheckSession';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -19,6 +20,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <NavBar/>
         <Routes>
           <Route
           path="/" element={<ProductList productos={productos} />} />

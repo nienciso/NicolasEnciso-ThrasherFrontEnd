@@ -10,7 +10,7 @@ function Login() {
   const handleLogin = async () => {
     try {
       const userData = await loginUser(email, password);
-      console.log('Respuesta de loginUser:', userData);
+
       if (userData && userData.rol) {
         if (userData.rol === 1) {
           navigate('/');
@@ -50,7 +50,7 @@ function Login() {
   onChange={(e) => setPassword(e.target.value)}
 />
         </div>
-        <button type="button" onClick={handleLogin}>
+        <button className='btn btn-primary'  type="button" onClick={handleLogin}>
           Iniciar Sesión
         </button>
       </form>
