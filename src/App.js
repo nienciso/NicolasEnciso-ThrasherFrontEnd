@@ -6,8 +6,9 @@ import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import Login from './components/Login';
 import CheckSession from './components/CheckSession';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Admin from './components/admin';
+import AgregarProducto from './components/AgregarProductos';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -27,13 +28,13 @@ function App() {
       <div className="App">
         <NavBar/>
         <Routes>
-          <Route
-          path="/" element={<ProductList productos={productos} />} />
+          <Route path="/" element={<ProductList productos={productos} />} />
           <Route path="/productos/:id" element={<ProductDetail />} />
           <Route path="/auth/login" element={<Login />} />
           <Route exact path="/auth/login" component={Login} />
           <Route path="/validate-session" component={CheckSession} />
-          <Route path="/admin" element={<Admin productos={todosLosProductos} />} /> {/* pasando el estado todosLosProductos como una propiedad al componente Admin */}
+          <Route path="/admin" element={<Admin productos={todosLosProductos} />} /> 
+          <Route path="/agregar-producto" element={<AgregarProducto />} />
         </Routes>
       </div>
     </Router>

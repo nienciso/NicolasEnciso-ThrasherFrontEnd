@@ -1,6 +1,8 @@
 import React from 'react';
-
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -19,6 +21,9 @@ function Admin({ productos }) {
     <div>
       <h1>Panel de administración</h1>
       <p>Aquí puedes administrar todo en tu sitio web.</p>
+      <Link to="/agregar-producto">
+        <button>Agregar Producto</button>
+      </Link>
 
       {/* mostrando todos los productos en una lista */}
       {productos.map((producto) => (
